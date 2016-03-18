@@ -1,0 +1,45 @@
+﻿<ResourceDictionary     
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:map="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps"   
+    xmlns:my="clr-namespace:ARFinity">
+
+    <my:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter1" />
+
+    <Style x:Key="pushpinStyle" TargetType="map:Pushpin">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="map:Pushpin">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="2" CornerRadius="2" Background="Black" Grid.ColumnSpan="2" />                        
+                        <Rectangle Width="{Binding IconUriWidth}" MaxHeight="32" MaxWidth="32">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="{Binding IconUri}" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock Text="{Binding ShortName}" TextWrapping="Wrap" MaxWidth="150" Padding="2.5" Foreground="White" Grid.Column="1" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="pushpinStyle1" TargetType="map:Pushpin">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="map:Pushpin">
+                    <Rectangle Width="64" Height="64">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="{Binding IconUri64}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

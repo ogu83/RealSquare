@@ -1,0 +1,65 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="ARFinity.ARView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dev="clr-namespace:Microsoft.Devices;assembly=Microsoft.Phone"        
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"    
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True"
+    >
+    <phone:PhoneApplicationPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ARFinity;component/Dictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </phone:PhoneApplicationPage.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid>
+            <Rectangle x:Name="camRect" Height="640" Canvas.ZIndex="1">
+                <Rectangle.Fill>
+                    <VideoBrush x:Name="viewfinderBrush" Stretch="Fill">
+                        <VideoBrush.RelativeTransform>
+                            <CompositeTransform CenterX="0.5" CenterY="0.5" Rotation="90" />
+                        </VideoBrush.RelativeTransform>
+                    </VideoBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+        <Grid x:Name="radarGrid" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Height="150" Margin="10" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <RotateTransform />
+            </Grid.RenderTransform>
+            <Grid.Background>
+                <ImageBrush ImageSource="images/radar-background@2x.png" />
+            </Grid.Background>
+            <Image Source="images/view_angle@2x.png" Width="90" Height="67.5" UseLayoutRounding="True" Margin="0,0,0,45" />
+            <Canvas x:Name="radarCanvas" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                <Canvas.RenderTransform>
+                    <RotateTransform />
+                </Canvas.RenderTransform>
+            </Canvas>
+        </Grid>
+
+        <Grid x:Name="placeholderGrid" Width="480" Margin="480,0" />
+        
+        <Grid x:Name="ExternalUserControlPlaceHolder" />
+        
+    </Grid>
+
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="btnCaptureImage" IconUri="/images/camera1.png" Text="Capture" Click="btnCaptureImage_Click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+</phone:PhoneApplicationPage>

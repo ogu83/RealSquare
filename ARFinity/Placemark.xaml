@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="ARFinity.Placemark"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    UseLayoutRounding="True"
+    Width="214" Height="100" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="48*" />
+            <ColumnDefinition Width="166*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="42*" />
+            <RowDefinition Height="42*" />
+            <RowDefinition Height="16*" />
+        </Grid.RowDefinitions>
+
+        <Image x:Name="backgroundImage" Source="images/placemark.png" Grid.RowSpan="3" Grid.ColumnSpan="2" Opacity="0.7" />
+
+        <TextBlock Grid.Column="1" Text="{Binding ShortName}" Margin="2" TextWrapping="Wrap" FontSize="14" VerticalAlignment="Center" />
+
+        <Rectangle Width="32" Height="32">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="{Binding IconUri64}" />
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <TextBlock Grid.Row="1" Margin="5,2,0,0" FontSize="12" Foreground="{StaticResource PhoneAccentBrush}">
+                <Run Text="{Binding Distance}" />
+                <Run Text=" m" />
+        </TextBlock>
+
+        <TextBlock Text="{Binding Address}" Grid.Column="1" Grid.Row="1" FontSize="10" TextWrapping="Wrap" />
+    </Grid>
+</UserControl>

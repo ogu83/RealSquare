@@ -1,0 +1,132 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="RealSquare.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:RealSquare.ViewModels"
+    
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="36"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:arfinity="clr-namespace:ARFinity;assembly=ARFinity"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    
+    shell:SystemTray.IsVisible="True"
+    >
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="PanoramaItemHeaderTemplate">
+            <Grid>
+                <ContentPresenter>
+                    <TextBlock Text="{Binding}" FontSize="56" />
+                </ContentPresenter>
+            </Grid>
+        </DataTemplate>
+
+        <arfinity:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter1" />
+    </phone:PhoneApplicationPage.Resources>
+
+    <phone:PhoneApplicationPage.DataContext>
+        <vm:MainPageVM />
+    </phone:PhoneApplicationPage.DataContext>
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+
+        <controls:Panorama x:Name="mainPanaromaControl" Title="{Binding ApplicationTitle}" SelectionChanged="Panorama_SelectionChanged">
+            <controls:Panorama.TitleTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" FontSize="72" Margin="0,65,0,0" />
+                </DataTemplate>
+            </controls:Panorama.TitleTemplate>
+
+            <controls:PanoramaItem Header="locations" HeaderTemplate="{StaticResource PanoramaItemHeaderTemplate}">
+
+                <Grid DataContext="{Binding MyLocationsVM}">
+                    <StackPanel Visibility="{Binding Path=IsRefreshing, Converter={StaticResource BooleanToVisibilityConverter1}}" Margin="10,0,0,0">
+                        <TextBlock FontSize="26">Searching for nearby locations.</TextBlock>
+                        <ProgressBar IsIndeterminate="{Binding Path=IsRefreshing, Mode=OneWay}"></ProgressBar>
+                    </StackPanel>
+
+                    <ListBox ItemsSource="{Binding NearByLocations}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <CheckBox IsChecked="{Binding IsVisibleInMapAndView, Mode=TwoWay}" Content="{Binding Name}" FontSize="32" />
+                                    <TextBlock  Grid.Row="1" FontSize="24" FontStretch="UltraExpanded" Foreground="{StaticResource PhoneAccentBrush}" Margin="50,-20,0,0">
+                                        <Run Text="{Binding Distance}" />
+                                        <Run Text=" meters" />
+                                    </TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="settings" HeaderTemplate="{StaticResource PanoramaItemHeaderTemplate}">
+                <Grid DataContext="{Binding MySettingsVM}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <CheckBox Content="Show Accuracy Radius" IsChecked="{Binding AccuracyRadiusVisible, Mode=TwoWay}" FontSize="32" />
+                    <StackPanel Grid.Row="1" Margin="10,0,0,0" >
+                        <Slider Name="slider1" Value="{Binding SearchRadius, Mode=TwoWay}" Minimum="10" Maximum="3000" SmallChange="10" LargeChange="100" />
+                        <TextBlock  FontSize="24" >
+                            <Run Text="Nearby search radius : " />
+                            <Run Text="{Binding SearchRadius}" Foreground="{StaticResource PhoneAccentBrush}" />
+                            <Run Text=" meters"/>
+                        </TextBlock>
+                    </StackPanel>
+                    <CheckBox Content="Location Service" Grid.Row="2" IsChecked="{Binding EnableLocation, Mode=TwoWay}" FontSize="32" />
+                    <TextBlock Grid.Row="3" Grid.RowSpan="10" FontSize="20" TextWrapping="Wrap" Margin="10" TextAlignment="Left" Tap="txtPrivacy_Tap" x:Name="txtPrivacy">
+                        Your privacy is important to us. 
+                        This application uses your current location to improve your mapping experience. 
+                        This may be stored and shared. 
+                        You may disable Location Services. 
+                        If you have questions, contact realsquare@oguzkoroglu.net
+                    </TextBlock>
+                </Grid>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem Header="about" HeaderTemplate="{StaticResource PanoramaItemHeaderTemplate}" FontSize="24">
+                <ScrollViewer>
+                    <StackPanel>
+                        <TextBlock TextWrapping="Wrap">
+                        This is a map and augmented reality application, 
+                        which tags the places in the map and also in the camera. 
+                        You can search and find the point of interests around you, 
+                        select and see in the map locations.
+                        </TextBlock>
+                        <TextBlock TextWrapping="Wrap" Margin="0,20,0,0">
+                        After locating the places on the map you can hold your phone vertically and
+                        your phone will tag places in the camera as virtual reality tags.
+                        </TextBlock>
+                        <TextBlock FontStyle="Italic" TextWrapping="Wrap" Margin="0,20,0,0">
+                        For more information http://en.oguzkoroglu.net/
+                        </TextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </controls:PanoramaItem>
+        </controls:Panorama>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="btnMap" IconUri="/images/globe1.png" Text="Map" Click="btnMap_Click" />
+            <!--<shell:ApplicationBarIconButton x:Name="btnCaptureImage" IconUri="/images/camera1.png" Text="Capture" Click="btnCaptureImage_Click" />-->
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

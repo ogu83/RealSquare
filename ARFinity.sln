@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealSquare", "RealSquare\RealSquare.csproj", "{95322D7C-A580-4E1E-8263-EACD800D365B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARFinity", "ARFinity\ARFinity.csproj", "{11B96FAE-5BA5-4D14-B6C5-2402BC06C975}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoursquareApi", "FoursquareApi\FoursquareApi.csproj", "{14CC56F3-49EE-488E-828C-B045A4156BB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewBox", "ViewBox\ViewBox.csproj", "{31E7F8EF-4D23-4FBB-AA81-8211499FED0D}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs18
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ARFinity\\ARFinity.csproj
+		SccProjectName1 = ARFinity
+		SccLocalPath1 = ARFinity
+		SccProjectUniqueName2 = FoursquareApi\\FoursquareApi.csproj
+		SccProjectName2 = FoursquareApi
+		SccLocalPath2 = FoursquareApi
+		SccProjectUniqueName3 = RealSquare\\RealSquare.csproj
+		SccProjectName3 = RealSquare
+		SccLocalPath3 = RealSquare
+		SccProjectUniqueName4 = ViewBox\\ViewBox.csproj
+		SccProjectName4 = ViewBox
+		SccLocalPath4 = ViewBox
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95322D7C-A580-4E1E-8263-EACD800D365B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95322D7C-A580-4E1E-8263-EACD800D365B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95322D7C-A580-4E1E-8263-EACD800D365B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{95322D7C-A580-4E1E-8263-EACD800D365B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95322D7C-A580-4E1E-8263-EACD800D365B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95322D7C-A580-4E1E-8263-EACD800D365B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{11B96FAE-5BA5-4D14-B6C5-2402BC06C975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11B96FAE-5BA5-4D14-B6C5-2402BC06C975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11B96FAE-5BA5-4D14-B6C5-2402BC06C975}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{11B96FAE-5BA5-4D14-B6C5-2402BC06C975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11B96FAE-5BA5-4D14-B6C5-2402BC06C975}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14CC56F3-49EE-488E-828C-B045A4156BB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14CC56F3-49EE-488E-828C-B045A4156BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14CC56F3-49EE-488E-828C-B045A4156BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14CC56F3-49EE-488E-828C-B045A4156BB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31E7F8EF-4D23-4FBB-AA81-8211499FED0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31E7F8EF-4D23-4FBB-AA81-8211499FED0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31E7F8EF-4D23-4FBB-AA81-8211499FED0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31E7F8EF-4D23-4FBB-AA81-8211499FED0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
